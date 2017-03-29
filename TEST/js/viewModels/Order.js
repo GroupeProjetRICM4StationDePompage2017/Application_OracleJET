@@ -7,21 +7,21 @@
 /**
  * Order module
  */
-define(['ojs/ojcore', 'knockout'
+define(['ojs/ojcore', 'knockout','jquery'
 ], function (oj, ko) {
     /**
      * The view model for the main content view template
      */
-    function AccueilContentViewModel() {
+    function OrderContentViewModel() {
         var self = this;
-        self.login = ko.observable();
-        self.mdp = ko.observable();
+        self.login = ko.observable('Shinigami_remplaçant');
+        self.mdp = ko.observable('bankai');
         
         self.levelrequire = ko.observable();
         
     }
     
-    return AccueilContentViewModel;
+    return OrderContentViewModel;
 });
 
 //Verifie si l'utilisateur est inscrit
@@ -30,9 +30,9 @@ function order() {
     
     //Création donnée
     var xhr = new XMLHttpRequest();
-    var l = document.getElementById('l').value;//'Shinigami_remplaçant'
-    var m = document.getElementById('m').value;//'bankai'
-    var ni = document.getElementById('ni').value;//'bankai'
+    var l = document.getElementById('lo').value;//'Shinigami_remplaçant'
+    var m = document.getElementById('mo').value;//'bankai'
+    var ni = document.getElementById('ni').value;//
     var params = 'login='+l+"&mdp="+m+"&levelrequire="+ni;
     var Js=[{login:l,mdp:m,levelrequire:ni}];
     //Début requête
@@ -57,7 +57,7 @@ function order() {
                         dataType: 'json',
                         async: 'false',
                         success: function (data, textStatus, jqXHR) {
-                            console.log("Success");
+                            console.log("ajax Success");
 
                             console.log(data[0]["message"]);
                            if(data[0]["message"]==="True") {//simple !!! equals
@@ -66,11 +66,11 @@ function order() {
                                 rep= document.createTextNode("on ajoute");
                             }
                             else
-                                rep= document.createTextNode("sorry");
+                                rep= document.createTextNode("sorry~~~"+data[0]["erreur"]);
                             
-                            console.log("fin  ");
+                            console.log("ajax fin  ");
                           paragraphe.appendChild(rep);
-            document.getElementById('verif').appendChild(paragraphe);
+            document.getElementById('verifo').appendChild(paragraphe);
                             
                         },
                     error: function() {
@@ -86,7 +86,7 @@ function order() {
 
 
 function dataMarch() {
-    console.log("March\n");
+    console.log("March Order\n");
     var xhr = new XMLHttpRequest();
     var params = 'periode=march&year=2016';//'php'+params
     xhr.open('GET', 'http://stationpompeco2017.hopto.org/server/getOrdre.php?',true);
@@ -110,7 +110,7 @@ function dataMarch() {
                         dataType: 'json',
                         async: 'false',
                         success: function (data, textStatus, jqXHR) {
-                            console.log("Success");
+                            console.log("ajax Success");
 
                            if(data[0]["message"]==="True") {//simple !!! equals
                                 //window.location.href='js/views/Accueil.html';
@@ -124,7 +124,7 @@ function dataMarch() {
                                 }
                             
                           paragraphe.appendChild(rep);
-            document.getElementById('march').appendChild(paragraphe);
+            document.getElementById('order').appendChild(paragraphe);
                             
                         },
                     error: function() {

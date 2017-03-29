@@ -56,7 +56,7 @@ function check() {
                         dataType: 'json',
                         async: 'false',
                         success: function (data, textStatus, jqXHR) {
-                            console.log("Success");
+                            console.log("ajax Success");
 
                             console.log(data[0]["message"]);
                            if(data[0]["message"]==="True") {//simple !!! equals
@@ -65,12 +65,12 @@ function check() {
                             else
                                 alert('not correct Name or Password');
                             
-                            console.log("fin  ");
+                            console.log("ajax fin  ");
                           
                             
                         },
                     error: function() {
-              alert('La requête n\'a pas abouti'); }
+              alert('ajax n\'a pas abouti'); }
         });
                 });
         }
