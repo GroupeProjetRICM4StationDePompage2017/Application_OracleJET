@@ -1,0 +1,23 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<h1>dayChart</h1>
+<div id='chart-container'>
+    <div id="lineAreaChart" data-bind="ojComponent: {
+            component: 'ojChart', 
+            type: 'lineWithArea', 
+            series: areaSeriesValue, 
+            groups: areaGroupsValue, 
+            animationOnDisplay: 'auto',
+            animationOnDataChange: 'auto',
+            orientation: orientationValue,
+            stack: stackValue,
+            hoverBehavior: 'dim'
+         }"
+         style="max-width:500px;width:100%;height:350px;">
+    </div>
+    
+</div>

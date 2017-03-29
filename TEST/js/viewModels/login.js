@@ -5,9 +5,9 @@
  */
 
 /**
- * Accueil module
+ * Login module
  */
-define(['ojs/ojcore', 'knockout'
+define(['ojs/ojcore', 'knockout','jquery'
 ], function (oj, ko) {
     /**
      * The view model for the main content view template
@@ -30,7 +30,7 @@ function check() {
     var l = document.getElementById('l').value;//'Shinigami_remplaçant'
     var m = document.getElementById('m').value;//'bankai'
     var params = 'login='+l+"&mdp="+m;
-    
+    var response;
     //Début requête
     xhr.open('POST', 'http://stationpompeco2017.hopto.org/server/verification.php',true);
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -38,22 +38,48 @@ function check() {
         
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) { // La constante DONE appartient à l'objet XMLHttpRequest, elle n'est pas globale
             //Afficher résultat  (response=json)
-            var response = JSON.parse(xhr.responseText);
+            response = JSON.parse(xhr.responseText);
             
             var paragraphe = document.createElement('p');
             var rep = document.createTextNode(xhr.responseText);
             
             paragraphe.appendChild(rep);
             document.getElementById('verif').appendChild(paragraphe);
-            var t=JSON.values(response);
-            //console.log(t[1]);
-            //if(t[1].equals("True")) window.location.href='js/views/Accueil.html';
+            
+            //console.log(response[0]["message"]);
+            //if(response[0]["message"].equals("True")) {window.location.href='js/views/Accueil.html';}
+            $(function () {
+                    $.ajax({
+                        url: "http://stationpompeco2017.hopto.org/server/verification.php",
+                        type: 'POST',
+                        data : params,
+                        dataType: 'json',
+                        async: 'false',
+                        success: function (data, textStatus, jqXHR) {
+                            console.log("Success");
+
+                            console.log(data[0]["message"]);
+                           if(data[0]["message"]==="True") {//simple !!! equals
+                                window.location.href='js/views/Accueil.html';
+                            }
+                            else
+                                alert('not correct Name or Password');
+                            
+                            console.log("fin  ");
+                          
+                            
+                        },
+                    error: function() {
+              alert('La requête n\'a pas abouti'); }
+        });
+                });
         }
 
         
     });
+    
     xhr.send(params);
-
+    //params=[{login:l,mdp:m}];
     
 
     
