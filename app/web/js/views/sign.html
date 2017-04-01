@@ -1,0 +1,159 @@
+<div id="componentDemo" class="oj-form">
+
+  <div id="complete-example" 
+       class="oj-form oj-md-odd-cols-4 oj-md-labels-inline oj-sm-odd-cols-12">
+    <div class="oj-flex"> 
+      <div class="oj-flex-item">
+        <label for="username">Username</label>
+      </div>
+      <div class="oj-flex-item">
+        <input 
+          id="username" 
+          type="text" 
+          autocomplete="off" 
+          required 
+          name="username" 
+          placeholder="at least 3 alphanumeric characters" 
+          data-bind="ojComponent: {
+            component: 'ojInputText', 
+            value: userName, 
+            validators: [{
+            type: 'regExp', 
+            options: {
+              pattern: '[a-zA-Z0-9]{3,}', 
+              messageDetail: 
+                'You must enter at least 3 letters or numbers'}}],
+            invalidComponentTracker: tracker}">
+      </div>
+    </div>
+    <div class="oj-flex"> 
+      <div class="oj-flex-item">
+        <label for="password">Password</label>        
+      </div>
+      <div class="oj-flex-item">
+        <input 
+          id="password" 
+          type="password" 
+          name="password" 
+          required
+          title="Enter at least 6 characters including a number, one uppercase and lowercase letter" 
+          data-bind="ojComponent: {
+            component: 'ojInputPassword', 
+            value: password, 
+            title:
+            '\x3Chtml><b>at least 6 characters</b> including a number, upper and lowercase letter\x3C/html>',
+            validators: [{
+              type: 'regExp', 
+              options : {
+                pattern: '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}', 
+                label: 'Password',
+                messageSummary : '\'{label}\' too Weak',
+                messageDetail: 
+                '\x3chtml\x3eYou \x3cb\x3emust enter\x3c/b\x3e a password that meets our security levels.\x3c/html\x3e'}}],
+            invalidComponentTracker: tracker}"/>
+      </div>
+    </div>
+
+    <div class="oj-flex"> 
+      <div class="oj-flex-item">
+        <label for="cpassword">Confirm Password</label>
+      </div>
+      <div class="oj-flex-item">
+        <input 
+          id="cpassword" 
+          type="password" 
+          name="cpassword" 
+          required="required"
+          data-bind="ojComponent: {
+            component: 'ojInputPassword', 
+            value: passwordRepeat, 
+            validators: [equalToPassword], 
+            invalidComponentTracker: tracker}"/>
+      </div>
+    </div>
+      
+   <div class="oj-flex"> 
+      <div class="oj-flex-item">
+        <label for="name">Nom:</label>
+      </div>
+      <div class="oj-flex-item">
+        <input 
+          id="name" 
+          type="text" 
+          autocomplete="off" 
+          required 
+          name="name" 
+          placeholder="Nom" 
+          data-bind="ojComponent: {
+            component: 'ojInputText', 
+            value: nameOfUser, 
+            validators: [{
+            type: 'regExp', 
+            options: {
+              pattern: '[a-zA-Z]{3,}', 
+              messageDetail: 
+                'You must enter at least 3 letters'}}],
+            invalidComponentTracker: tracker}">
+      </div>
+    </div>
+      
+    <div class="oj-flex"> 
+      <div class="oj-flex-item">
+        <label for="firstName">Prénom:</label>
+      </div>
+      <div class="oj-flex-item">
+        <input 
+          id="firstName" 
+          type="text" 
+          autocomplete="off" 
+          required 
+          name="firstName" 
+          placeholder="Prénom" 
+          data-bind="ojComponent: {
+            component: 'ojInputText', 
+            value: firstNameOfUser, 
+            validators: [{
+            type: 'regExp', 
+            options: {
+              pattern: '[a-zA-Z]{3,}', 
+              messageDetail: 
+                'You must enter at least 3 letters'}}],
+            invalidComponentTracker: tracker}">
+      </div>
+    </div>
+
+    <div class="oj-flex"> 
+      <div class="oj-flex-item" style="margin:auto;">
+        <button 
+          id="create" 
+          type="button" 
+          data-bind="ojComponent: {
+                component: 'ojButton', 
+                label: 'Create',
+                disabled: shouldDisableCreate()}, 
+              click: createNewMember"></button>
+      </div>
+    </div>
+    <br/><br/>
+  </div>
+    
+</div>
+
+<div id="dialogWrapper">
+  <div style="display:none" id="modalDialog1" title="Information" 
+       data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide'}">
+     <div id=message class="oj-dialog-body">
+         Inscription réussie!
+     </div>
+  </div>
+
+</div>
+
+<div id="dialogWrapper">
+  <div style="display:none" id="modalDialog2" title="Information" 
+       data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide'}">
+     <div id=message class="oj-dialog-body" > L'inscription a échoué.
+     </div>
+  </div>
+
+</div>

@@ -1,0 +1,67 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<h1>Order</h1>
+
+<div id="form-container"  class="oj-form oj-flex-item  oj-panel oj-flex oj-sm-flex-direction-column oj-web-applayout-max-width oj-web-applayout-content">
+    
+    <label for="select">Selection de la carte :</label>
+    <select id="select"
+            data-bind="ojComponent: {component: 'ojSelect', options: boards,
+                                     value: selectVal,
+                                     optionChange: changeDevice,
+                                     rootAttributes: {style:'max-width:20em'}}">
+    </select>
+</div>
+<div data-bind="text:ordreEnCours" class="oj-form" style="font-size: 150%; font-weight: bold"></div>
+</br>
+<div id="form-container"  class="oj-form oj-panel oj-sm-flex-direction-column">
+    
+    <label for="ni">Niveau Requis :</label> 
+    <input id="ni"
+       data-bind="ojComponent: {
+        component: 'ojInputNumber', 
+        max:max,
+        min:min, 
+        step:step, 
+        value:currentValue,
+        required: isRequired, 
+        help: {definition: helpDef(), source:helpSource()}}">
+     
+            
+    <label for="lo" >Identifiant</label>
+    <input id="lo" data-bind="ojComponent: {
+            component: 'ojInputText',
+            required: isRequired, 
+            help: {definition: helpDef(), source:helpSource()}}">
+  <label for="mo">Mot de passe</label>
+  <input type="password" 
+         id="mo"
+         data-bind="ojComponent: {component: 'ojInputPassword',
+                                    required: isRequired, 
+                                    help: {definition: helpDef(), source:helpSource()}}">
+   
+  
+  <div id="popupWrapper">
+  <div style="display:none" id="popup1"
+       data-bind="ojComponent:{component: 'ojPopup'}">
+    <span id="respOrder"></span>
+  </div>
+  <button id="btnGo" 
+    data-bind="ojComponent: {component: 'ojButton', label: 'Envoyer'},
+               click: function()
+               {
+                 order();
+                 $('#popup1').ojPopup('open', '#btnGo');
+               }">
+  </button>
+</div>
+      
+      <!--<input type="submit" value ="Validation-Existence" onclick="order()" />-->
+</div>
+
+
+

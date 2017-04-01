@@ -1,0 +1,42 @@
+
+<h1>Dernière donnée :</h1>
+<!--<div id="chart-container">-->
+    <div class=" oj-flex oj-sm-flex-items-initial oj-sm-justify-content-space-around" style="margin: 5px; max-width: 820px;">
+        <div class="oj-flex oj-sm-flex-direction-column" style="min-width:200px;display:inline-block;text-align: center;">
+            <div class="oj-flex-item stat1" style="font-weight:bold;margin:10px;">Niveau<br/>de la Cuve</div>
+            <div class="oj-flex-item" id='pictochart1' data-bind="ojComponent:{
+          component: 'ojPictoChart',
+          items: pictoChartItems1,
+          columnCount: 8,
+          tooltip: {renderer: tooltipFunction}
+        }"
+                 style="max-width:150px;width:100%;height:100%;max-height:150px;display:inline-block;">
+            </div>
+            <div class="oj-flex-item stat1" data-bind="text:pourcentCuve"  style="margin:10px;background-color:#ececec;border-radius:5px;font-weight:bold;">0% </div>
+        </div>
+        <div class="oj-flex oj-sm-flex-direction-column" style="min-width:200px;display:inline-block;text-align: center;">
+            <div class="oj-flex-item stat1" style="font-weight:bold;margin:10px;">Niveau<br/>de la Batterie</div>
+            <div  class="oj-flex-item" id="gauge4" 
+                  data-bind="ojComponent: {
+             component: 'ojStatusMeterGauge', 
+             min: 0, 
+             max: 100, 
+             thresholds: thresholdValues,
+             value: batterie, 
+             orientation: 'circular',
+             metricLabel: {rendered: 'on'},
+             plotArea: {rendered: 'on'},
+             readOnly: true
+             }" 
+                  style=
+                  "align:center;
+                  height:100px;
+                  width:45%;
+                  margin: auto;">
+            </div>
+        </div>
+    </div>
+
+
+<!--</div>-->
+

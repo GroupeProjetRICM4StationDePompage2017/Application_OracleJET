@@ -1,0 +1,43 @@
+<div id="form-container">
+
+  <h1>Veuillez vous connecter</h1>
+
+  <div class="oj-panel oj-flex oj-sm-only-flex-direction-column oj-md-only-flex-direction-column oj-lg-flex-items-1 oj-form-layout" >                      
+    <div class="oj-flex-item">   
+      <div class="oj-form  oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline">
+        <div class="oj-flex">  
+          <div class="oj-flex-item">
+            <label for="l">Login:</label>
+          </div>
+          <div class="oj-flex-item">
+            <input id="l" 
+                   data-bind="ojComponent: {component: 'ojInputText', required: true}">
+          </div>
+        </div>
+        <div class="oj-flex"> 
+          <div class="oj-flex-item">
+            <label for="m">Password :</label>
+          </div>
+          <div class="oj-flex-item">
+            <input type="password" id="m"
+                    data-bind="ojComponent: {component: 'ojInputPassword',
+                                    required: isRequired}">
+          </div>
+        </div>
+          
+        <div class="oj-flex">
+           <div class="oj-flex-item">
+            <label for="btnGo"></label>
+          </div>
+           <div class="oj-flex-item">
+            <button id="btnGo" 
+                    data-bind="ojComponent: {component: 'ojButton', label: 'Se connecter'},
+                      click: function(){check()}">
+            </button>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>                            
+    
+</div>

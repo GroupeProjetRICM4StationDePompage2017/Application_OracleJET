@@ -1,0 +1,36 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<h1>Bienvenu dans votre espace personnel</h1>
+<div id="form-container"  class="oj-form oj-flex-item  oj-panel oj-flex oj-sm-flex-direction-column oj-web-applayout-max-width oj-web-applayout-content">
+    
+    <label for="select">Selection de la carte :</label>
+    <select id="select"
+            data-bind="ojComponent: {component: 'ojSelect', options: boards,
+                                     value: selectVal,
+                                     optionChange: changeDevice,
+                                     rootAttributes: {style:'max-width:20em'}}">
+    </select>
+</div>
+<div class="oj-web-applayout-content oj-web-applayout-max-width">
+    <div class="oj-flex">
+
+        <div class="oj-xl-3 oj-sm-12 oj-flex-item oj-flex">
+            <div id="complementaryContent" role="complementary" class="oj-panel oj-margin oj-flex-item"
+                 data-bind="ojModule: 'currentTank'">
+            </div>
+        </div>
+        <div class="oj-xl-9 oj-lg-12 oj-sm-12 oj-flex-item oj-flex">
+            <div id="dayContent" role="main" class="oj-panel oj-margin oj-flex-item"
+                 data-bind="ojModule: 'dayChart'">
+            </div>
+        </div>
+    </div>
+    
+    <div id="month" class="oj-flex" data-bind="ojModule: 'monthChart'">
+        
+    </div> 
+</div>
